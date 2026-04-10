@@ -45,5 +45,17 @@
       "bio": "Coffee enthusiast",
       "favoriteCafes": [1, 2]
     }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "name": "Outdoor Market",
+      "date": "2024-04-20",
+      "time": "10:00 AM",
+      "location": "Downtown Plaza",
+      "attendees": 50,
+      "image": "https://images.unsplash.com/photo-1555939594-58d7cb561180?w=400&h=300&fit=crop",
+      "description": "Join us for the weekly outdoor coffee market featuring local roasters and specialty drinks."
+    }
   ]
 }

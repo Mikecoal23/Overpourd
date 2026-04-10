@@ -8,6 +8,8 @@ import Explore from './pages/Explore';
 import CafePage from './pages/CafePage';
 import Checkin from './pages/Checkin';
 import Profile from './pages/Profile';
+import Friends from './pages/Friends';
+import Groups from './pages/Groups';
 import './index.css';
 
 function App() {
@@ -22,22 +24,18 @@ function App() {
   return (
     <Router>
       <Header />
-      <Routes>
-        <Route path="/" element={<Feed />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/cafe/:id" element={<CafePage />} />
-        <Route path="/checkin" element={<Checkin />} />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
-      <BottomNav />
-      
-      {/* Floating Check-In Button */}
-      <button
-        onClick={() => setIsCheckinOpen(true)}
-        className="fixed bottom-20 right-4 w-14 h-14 bg-coffee text-white rounded-full flex items-center justify-center shadow-lg hover:bg-opacity-90 transition text-2xl font-bold z-40"
-      >
-        +
-      </button>
+      <div className="pt-20 pb-20">
+        <Routes>
+          <Route path="/" element={<Feed />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/cafe/:id" element={<CafePage />} />
+          <Route path="/checkin" element={<Checkin />} />
+          <Route path="/friends" element={<Friends />} />
+          <Route path="/groups" element={<Groups />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </div>
+      <BottomNav onCheckinClick={() => setIsCheckinOpen(true)} />
       
       {/* Check-In Modal */}
       <CheckinModal
