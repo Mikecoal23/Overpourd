@@ -75,6 +75,42 @@
       "name": "Emma Davis",
       "username": "emmadavis",
       "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=emmadavis"
+    },
+    {
+      "id": 5,
+      "name": "Alex Rodriguez",
+      "username": "alexr",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=alexr"
+    },
+    {
+      "id": 6,
+      "name": "Jessica Brown",
+      "username": "jbrown",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=jbrown"
+    },
+    {
+      "id": 7,
+      "name": "David Lee",
+      "username": "davidlee",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=davidlee"
+    },
+    {
+      "id": 8,
+      "name": "Olivia Martinez",
+      "username": "omartinez",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=omartinez"
+    },
+    {
+      "id": 9,
+      "name": "James Wilson",
+      "username": "jwilson",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=jwilson"
+    },
+    {
+      "id": 10,
+      "name": "Sophia Anderson",
+      "username": "sanderson",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=sanderson"
     }
   ],
   "friends": [
@@ -91,6 +127,48 @@
       "friendId": 3,
       "status": "accepted",
       "addedDate": "2026-03-20"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "friendId": 5,
+      "status": "accepted",
+      "addedDate": "2026-03-22"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "friendId": 6,
+      "status": "accepted",
+      "addedDate": "2026-03-25"
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "friendId": 7,
+      "status": "accepted",
+      "addedDate": "2026-03-28"
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "friendId": 8,
+      "status": "accepted",
+      "addedDate": "2026-04-01"
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "friendId": 9,
+      "status": "pending",
+      "addedDate": "2026-04-05"
+    },
+    {
+      "id": 8,
+      "userId": 1,
+      "friendId": 10,
+      "status": "pending",
+      "addedDate": "2026-04-08"
     }
   ],
   "groups": [
@@ -111,5 +189,163 @@
       "members": [2, 4],
       "inviteCode": "CRAWL456",
       "createdDate": "2026-03-25"
+    },
+    {
+      "id": 3,
+      "name": "Espresso Masters",
+      "description": "For people who love their espresso dark and strong",
+      "createdBy": 5,
+      "members": [1, 5, 7, 9],
+      "inviteCode": "ESPRESSO",
+      "createdDate": "2026-03-18"
+    },
+    {
+      "id": 4,
+      "name": "Cold Brew Squad",
+      "description": "Cold brew lovers unite! Share recipes and tips",
+      "createdBy": 6,
+      "members": [1, 6, 8],
+      "inviteCode": "COLDBREW",
+      "createdDate": "2026-04-02"
+    },
+    {
+      "id": 5,
+      "name": "Third Wave Coffee",
+      "description": "Specialty coffee appreciation and tasting group",
+      "createdBy": 3,
+      "members": [2, 3, 5, 10],
+      "inviteCode": "THIRDWAVE",
+      "createdDate": "2026-03-30"
+    },
+    {
+      "id": 6,
+      "name": "Latte Art Society",
+      "description": "Perfecting the art of beautiful lattes",
+      "createdBy": 8,
+      "members": [1, 4, 6, 8],
+      "inviteCode": "LATTEARTS",
+      "createdDate": "2026-04-03"
+    },
+    {
+      "id": 7,
+      "name": "Coffee & Code",
+      "description": "For devs who run on coffee",
+      "createdBy": 7,
+      "members": [1, 7, 9],
+      "inviteCode": "CAFFECODE",
+      "createdDate": "2026-04-04"
+    }
+  ],
+  "checkins": [
+    {
+      "id": 1,
+      "userId": 2,
+      "drink": "Cappuccino",
+      "cafe": "Bean There Coffee",
+      "location": "Downtown",
+      "rating": 4.5,
+      "review": "Amazing foam art! Love this place",
+      "date": "2026-04-10",
+      "time": "10:30 AM"
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "drink": "Cold Brew",
+      "cafe": "Brew Lab",
+      "location": "Midtown",
+      "rating": 5,
+      "review": "Best cold brew in the city!",
+      "date": "2026-04-10",
+      "time": "2:15 PM"
+    },
+    {
+      "id": 3,
+      "userId": 5,
+      "drink": "Espresso Shot",
+      "cafe": "Pichacho Coffee Roasters",
+      "location": "Downtown",
+      "rating": 4.5,
+      "review": "Perfect crema, smooth finish",
+      "date": "2026-04-10",
+      "time": "8:00 AM"
+    },
+    {
+      "id": 4,
+      "userId": 6,
+      "drink": "Latte",
+      "cafe": "Coffee Corner",
+      "location": "Uptown",
+      "rating": 4,
+      "review": "Great latte art!",
+      "date": "2026-04-09",
+      "time": "3:45 PM"
+    },
+    {
+      "id": 5,
+      "userId": 7,
+      "drink": "Americano",
+      "cafe": "Tech Cafe",
+      "location": "Tech Park",
+      "rating": 4.5,
+      "review": "Perfect for coding sessions",
+      "date": "2026-04-10",
+      "time": "11:00 AM"
+    },
+    {
+      "id": 6,
+      "userId": 8,
+      "drink": "Mocha",
+      "cafe": "Sweet Brews",
+      "location": "Downtown",
+      "rating": 5,
+      "review": "Chocolate heaven!",
+      "date": "2026-04-09",
+      "time": "4:30 PM"
+    },
+    {
+      "id": 7,
+      "userId": 2,
+      "drink": "Flat White",
+      "cafe": "Brew Lab",
+      "location": "Midtown",
+      "rating": 4,
+      "review": "Smooth and creamy",
+      "date": "2026-04-08",
+      "time": "9:30 AM"
+    },
+    {
+      "id": 8,
+      "userId": 5,
+      "drink": "Pour Over",
+      "cafe": "Bean There Coffee",
+      "location": "Downtown",
+      "rating": 5,
+      "review": "Excellent single origin!",
+      "date": "2026-04-08",
+      "time": "7:00 AM"
+    },
+    {
+      "id": 9,
+      "userId": 3,
+      "drink": "Iced Latte",
+      "cafe": "Coffee Corner",
+      "location": "Uptown",
+      "rating": 4,
+      "review": "Refreshing on a hot day",
+      "date": "2026-04-07",
+      "time": "1:20 PM"
+    },
+    {
+      "id": 10,
+      "userId": 6,
+      "drink": "Macchiato",
+      "cafe": "Pichacho Coffee Roasters",
+      "location": "Downtown",
+      "rating": 4.5,
+      "review": "Strong and bold",
+      "date": "2026-04-07",
+      "time": "5:15 PM"
     }
   ]
+}

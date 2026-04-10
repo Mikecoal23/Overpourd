@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { FiUsers, FiMapPin, FiAward, FiSearch, FiUserPlus, FiCopy, FiCheck, FiPlus } from 'react-icons/fi';
+import { FiUsers, FiMapPin, FiAward, FiSearch, FiUserPlus, FiCopy, FiCheck, FiPlus, FiCoffee } from 'react-icons/fi';
 import axios from 'axios';
 import CheckinCard from '../components/ui/CheckinCard';
 
 export default function Feed() {
   const [checkins, setCheckins] = useState([]);
+  const [friendCheckins, setFriendCheckins] = useState([]);
   const [filter, setFilter] = useState('friends');
   
   // Friends tab state
@@ -23,14 +24,27 @@ export default function Feed() {
   const [copiedGroup, setCopiedGroup] = useState(false);
   const [formData, setFormData] = useState({ name: '', description: '' });
 
-  // Fetch friends and users
+  // Fetch friends, users, and friend checkins
   useEffect(() => {
     const fetchData = async () => {
       try {
         const friendsRes = await axios.get('http://localhost:3000/friends');
         const usersRes = await axios.get('http://localhost:3000/users');
+        const checkinsRes = await axios.get('http://localhost:3000/checkins');
+        
         setFriends(friendsRes.data);
         setUsers(usersRes.data);
+        
+        // Filter checkins from accepted friends only
+        const acceptedFriendIds = friendsRes.data
+          .filter(f => f.status === 'accepted' && f.userId === 1)
+          .map(f => f.friendId);
+        
+        const filteredCheckins = checkinsRes.data.filter(c => 
+          acceptedFriendIds.includes(c.userId)
+        ).sort((a, b) => new Date(b.date + ' ' + b.time) - new Date(a.date + ' ' + a.time));
+        
+        setFriendCheckins(filteredCheckins);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -210,40 +224,93 @@ export default function Feed() {
               </div>
             </div>
 
-            {/* Friends List */}
+            {/* Friends Activity Feed */}
             <div>
-              <h3 className="font-semibold mb-3">Your Friends</h3>
-              {friends.length > 0 ? (
-                <div className="space-y-2">
-                  {friends
-                    .filter((f) => f.status === 'accepted')
-                    .map((friendship) => {
-                      const friend = users.find((u) => u.id === friendship.friendId);
-                      return friend ? (
-                        <div
-                          key={friendship.id}
-                          className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200"
-                        >
+              <h3 className="font-semibold mb-3 flex items-center gap-2">
+                <FiCoffee size={18} />
+                What Your Friends Are Drinking
+              </h3>
+              {friendCheckins.length > 0 ? (
+                <div className="space-y-3">
+                  {friendCheckins.map((checkin) => {
+                    const user = users.find(u => u.id === checkin.userId);
+                    return user ? (
+                      <div
+                        key={checkin.id}
+                        className="border border-gray-200 rounded-lg p-4 bg-white hover:shadow-md transition"
+                      >
+                        {/* User Info */}
+                        <div className="flex items-center justify-between mb-2">
                           <div className="flex items-center gap-2">
                             <img
-                              src={friend.avatar}
-                              alt={friend.name}
+                              src={user.avatar}
+                              alt={user.name}
                               className="w-10 h-10 rounded-full"
                             />
                             <div>
-                              <p className="font-semibold text-sm">{friend.name}</p>
-                              <p className="text-xs text-gray-500">@{friend.username}</p>
+                              <p className="font-semibold text-sm">{user.name}</p>
+                              <p className="text-xs text-gray-500">@{user.username}</p>
                             </div>
                           </div>
-                          <button className="text-coffee text-sm font-semibold hover:underline">
-                            View Profile
-                          </button>
+                          <span className="text-xs text-gray-400">
+                            {new Date(checkin.date).toLocaleDateString()}
+                          </span>
                         </div>
-                      ) : null;
-                    })}
+
+                        {/* Check-in Details */}
+                        <div className="bg-gradient-to-br from-coffee/5 to-orange-50 p-3 rounded-lg mb-2">
+                          <div className="flex items-center gap-2 mb-2">
+                            <FiCoffee size={20} className="text-coffee" />
+                            <span className="font-bold text-lg">{checkin.drink}</span>
+                          </div>
+                          <div className="space-y-1 text-sm">
+                            <p className="text-gray-700">
+                              <span className="font-semibold">☕ Cafe:</span> {checkin.cafe}
+                            </p>
+                            <p className="text-gray-600 flex items-center gap-1">
+                              <FiMapPin size={14} />
+                              {checkin.location}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Rating */}
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex gap-2">
+                            {[1, 2, 3, 4, 5].map((mugIndex) => (
+                              <div key={mugIndex} className="relative">
+                                {/* Background mug (empty) */}
+                                <FiCoffee size={24} className="text-gray-300" />
+                                
+                                {/* Filled overlay */}
+                                {checkin.rating >= mugIndex ? (
+                                  <FiCoffee
+                                    size={24}
+                                    className="text-coffee absolute top-0 left-0"
+                                  />
+                                ) : checkin.rating === mugIndex - 0.5 ? (
+                                  <div className="absolute top-0 left-0 overflow-hidden w-3">
+                                    <FiCoffee size={24} className="text-coffee" />
+                                  </div>
+                                ) : null}
+                              </div>
+                            ))}
+                          </div>
+                          <span className="text-sm font-semibold text-coffee">
+                            {checkin.rating}/5
+                          </span>
+                        </div>
+
+                        {/* Review */}
+                        {checkin.review && (
+                          <p className="text-sm text-gray-600 italic">"{checkin.review}"</p>
+                        )}
+                      </div>
+                    ) : null;
+                  })}
                 </div>
               ) : (
-                <p className="text-gray-500 text-sm">No friends yet. Search and add some!</p>
+                <p className="text-gray-500 text-sm">No activity from friends yet!</p>
               )}
             </div>
           </div>
