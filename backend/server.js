@@ -77,6 +77,34 @@ app.get('/checkins', async (req, res) => {
   }
 });
 
+app.get('/events', async (req, res) => {
+  try {
+    if (!db) {
+      return res.status(503).json({ error: 'Database connection not initialized' });
+    }
+    const events = await db.collection('events').find({}).toArray();
+    res.json(events);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.get('/events/:id', async (req, res) => {
+  try {
+    if (!db) {
+      return res.status(503).json({ error: 'Database connection not initialized' });
+    }
+    const event = await db.collection('events').findOne({ id: parseInt(req.params.id) });
+    if (event) {
+      res.json(event);
+    } else {
+      res.status(404).json({ error: 'Event not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 app.post('/checkins', async (req, res) => {
   try {
     if (!db) {

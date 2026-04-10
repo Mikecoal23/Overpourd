@@ -42,6 +42,12 @@ async function seedDB() {
       console.log('Groups inserted');
     }
 
+    // Insert events
+    if (data.events) {
+      await db.collection('events').insertMany(data.events);
+      console.log('Events inserted');
+    }
+
     console.log('Database seeded successfully');
   } catch (error) {
     console.error('Error seeding database:', error);

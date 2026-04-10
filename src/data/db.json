@@ -67,12 +67,52 @@
     {
       "id": 1,
       "name": "Outdoor Market",
-      "date": "2024-04-20",
-      "time": "10:00 AM",
-      "location": "Downtown Plaza",
-      "attendees": 50,
-      "image": "https://images.unsplash.com/photo-1555939594-58d7cb561180?w=400&h=300&fit=crop",
-      "description": "Join us for the weekly outdoor coffee market featuring local roasters and specialty drinks."
+      "date": "2026-04-11",
+      "time": "9:00 AM",
+      "location": "Pichacho Coffee Roasters",
+      "attendees": 24,
+      "image": "https://images.unsplash.com/photo-1559056199-641a0ac8b3f4?w=400&h=300&fit=crop",
+      "description": "This vibrant market is going to be filled with amazing vendors, awesome music, and of course, coffee."
+    },
+    {
+      "id": 2,
+      "name": "Espresso Tasting Workshop",
+      "date": "2024-04-18",
+      "time": "2:00 PM",
+      "location": "Brew Lab",
+      "attendees": 18,
+      "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop",
+      "description": "Learn the art of espresso making with our certified barista instructors."
+    },
+    {
+      "id": 3,
+      "name": "Latte Art Competition",
+      "date": "2024-04-22",
+      "time": "4:00 PM",
+      "location": "Coffee Corner",
+      "attendees": 32,
+      "image": "https://images.unsplash.com/photo-1495474472456-4d71bcdd2085?w=400&h=300&fit=crop",
+      "description": "Showcase your latte art skills and compete for prizes. All skill levels welcome!"
+    },
+    {
+      "id": 4,
+      "name": "Coffee Roasting Seminar",
+      "date": "2024-04-25",
+      "time": "7:00 PM",
+      "location": "Bean There Coffee",
+      "attendees": 15,
+      "image": "https://images.unsplash.com/photo-1559056199-641a0ac8b3f4?w=400&h=300&fit=crop",
+      "description": "Discover the science behind coffee roasting and how it affects flavor profiles."
+    },
+    {
+      "id": 5,
+      "name": "Cold Brew Master Class",
+      "date": "2024-04-28",
+      "time": "3:00 PM",
+      "location": "Brew Lab",
+      "attendees": 22,
+      "image": "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=400&h=300&fit=crop",
+      "description": "Learn how to make the perfect cold brew at home. Samples provided!"
     }
   ]
 }
