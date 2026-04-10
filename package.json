@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^1.6.2",
+    "mongodb": "^7.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.6.0",
@@ -25,5 +26,19 @@
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6",
     "vite": "^5.0.8"
-  }
+  },
+  "description": "A mobile-friendly web app for coffee lovers to check in at cafes, share drinks, and discover new coffee spots.",
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mikecoal23/Overpourd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mikecoal23/Overpourd/issues"
+  },
+  "homepage": "https://github.com/Mikecoal23/Overpourd#readme"
+>>>>>>> origin/christian-dev
 }
