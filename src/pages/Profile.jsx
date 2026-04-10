@@ -20,7 +20,7 @@ export default function Profile() {
   if (!user) return <div className="flex items-center justify-center w-full h-screen">Loading...</div>;
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-center px-4 py-4 pb-20 bg-cream text-coffee">
+    <div className="w-full flex flex-col items-center px-4 pt-4 pb-20 bg-cream text-coffee">
       <div className="bg-cream-soft rounded-lg shadow p-6 w-full max-w-md">
         <p className="text-lg font-semibold mb-2">{user.name}</p>
         <p className="text-coffee/70">{user.bio}</p>

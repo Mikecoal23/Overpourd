@@ -30,7 +30,6 @@
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6",
     "vite": "^5.0.8"
-<<<<<<< HEAD
   },
   "description": "A mobile-friendly web app for coffee lovers to check in at cafes, share drinks, and discover new coffee spots.",
   "main": "postcss.config.js",
@@ -45,7 +44,4 @@
     "url": "https://github.com/Mikecoal23/Overpourd/issues"
   },
   "homepage": "https://github.com/Mikecoal23/Overpourd#readme"
-=======
-  }
->>>>>>> origin/Alexis-dev
 }

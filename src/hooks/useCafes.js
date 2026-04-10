@@ -13,10 +13,15 @@ export function useCafes() {
   const fetchCafes = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/cafes`);
-      setCafes(response.data);
+      setError(null);
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      console.log('Fetching cafes from:', `${apiUrl}/cafes`);
+      const response = await axios.get(`${apiUrl}/cafes`, { timeout: 5000 });
+      setCafes(response.data || []);
     } catch (err) {
-      setError(err.message);
+      console.error('Error fetching cafes:', err.message);
+      setError(err.message || 'Failed to fetch cafes');
+      setCafes([]); // Set empty array on error
     } finally {
       setLoading(false);
     }
@@ -24,7 +29,8 @@ export function useCafes() {
 
   const getCafeById = async (id) => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/cafes/${id}`);
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      const response = await axios.get(`${apiUrl}/cafes/${id}`);
       return response.data;
     } catch (err) {
       setError(err.message);
