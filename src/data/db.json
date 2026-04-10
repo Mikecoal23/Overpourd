@@ -1,0 +1,49 @@
+{
+  "cafes": [
+    {
+      "id": 1,
+      "name": "The Daily Grind",
+      "location": "123 Main St",
+      "image": "https://via.placeholder.com/400x300?text=Daily+Grind",
+      "rating": 4.5
+    },
+    {
+      "id": 2,
+      "name": "Coffee Corner",
+      "location": "456 Oak Ave",
+      "image": "https://via.placeholder.com/400x300?text=Coffee+Corner",
+      "rating": 4.2
+    },
+    {
+      "id": 3,
+      "name": "Bean There",
+      "location": "789 Pine Rd",
+      "image": "https://via.placeholder.com/400x300?text=Bean+There",
+      "rating": 4.7
+    }
+  ],
+  "checkins": [
+    {
+      "id": 1,
+      "user": "John Doe",
+      "cafe": "The Daily Grind",
+      "drink": "Espresso",
+      "date": "2024-01-15"
+    },
+    {
+      "id": 2,
+      "user": "Jane Smith",
+      "cafe": "Coffee Corner",
+      "drink": "Latte",
+      "date": "2024-01-15"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "bio": "Coffee enthusiast",
+      "favoriteCafes": [1, 2]
+    }
+  ]
+}

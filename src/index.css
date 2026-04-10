@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-coffee: #8B4513;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.coffee {
+  color: #8B4513;
+}
+
+.bg-coffee {
+  background-color: #8B4513;
+}
