@@ -29,15 +29,15 @@ export default function BottomNav({ isCheckinOpen, onCheckinClick }) {
         {/* Center Check-In Button */}
         <button
           onClick={onCheckinClick}
-          className="relative w-16 h-16 -mt-8 rounded-full overflow-hidden shadow-lg transition hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-sage/50 z-50 border border-cream-soft bg-white flex items-center justify-center"
+          className="relative w-16 h-16 -mt-8 rounded-full overflow-hidden shadow-lg hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-sage/50 z-50 border-2 border-sage bg-white flex items-center justify-center transition-[box-shadow]"
           type="button"
         >
           <span
-            className={`absolute inset-0 rounded-full transition-all duration-300 ease-out origin-center ${
-              isCheckinOpen ? 'scale-100 bg-sage opacity-100' : 'scale-0 bg-sage opacity-0'
+            className={`absolute inset-0 rounded-full transition-all duration-500 ease-out ${
+              isCheckinOpen ? 'bg-sage' : 'bg-transparent'
             }`}
           />
-          <span className={`relative transition-colors duration-300 ${isCheckinOpen ? 'text-cream' : 'text-black'}`}>
+          <span className={`relative transition-colors duration-300 ${isCheckinOpen ? 'text-cream' : 'text-coffee'}`}>
             <FiPlus size={32} />
           </span>
         </button>
