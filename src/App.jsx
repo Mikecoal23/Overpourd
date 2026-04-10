@@ -5,6 +5,7 @@ import BottomNav from './components/layout/BottomNav';
 import CheckinModal from './components/ui/CheckinModal';
 import Feed from './pages/Feed';
 import Explore from './pages/Explore';
+import EventDetail from './pages/EventDetail';
 import CafePage from './pages/CafePage';
 import Checkin from './pages/Checkin';
 import Profile from './pages/Profile';
@@ -28,6 +29,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Feed />} />
           <Route path="/explore" element={<Explore />} />
+          <Route path="/events/:id" element={<EventDetail />} />
           <Route path="/cafe/:id" element={<CafePage />} />
           <Route path="/checkin" element={<Checkin />} />
           <Route path="/friends" element={<Friends />} />
