@@ -3,19 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --color-coffee: #8B4513;
+  color-scheme: light;
+  --color: #6B4636;
+  --bg: #f6f2eb;
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.coffee {
-  color: #8B4513;
-}
-
-.bg-coffee {
-  background-color: #8B4513;
+  background: #f6f2eb;
+  color: #6B4636;
+  min-height: 100vh;
 }

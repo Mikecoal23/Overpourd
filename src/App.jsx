@@ -35,7 +35,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
-      <BottomNav onCheckinClick={() => setIsCheckinOpen(true)} />
+      <BottomNav isCheckinOpen={isCheckinOpen} onCheckinClick={() => setIsCheckinOpen(true)} />
       
       {/* Check-In Modal */}
       <CheckinModal
