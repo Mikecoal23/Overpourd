@@ -1,9 +1,49 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CafeCard from '../components/ui/CafeCard';
+import MapView from '../components/ui/MapView';
+import { useCafes } from '../hooks/useCafes';
+
+// Error Boundary wrapper
+function MapWithErrorHandling({ cafes, selectedCafe, onSelectCafe, userLocation }) {
+  try {
+    return (
+      <MapView
+        cafes={cafes}
+        selectedCafe={selectedCafe}
+        onSelectCafe={onSelectCafe}
+        userLocation={userLocation}
+      />
+    );
+  } catch (err) {
+    console.error('Map rendering error:', err);
+    return (
+      <div className="flex items-center justify-center h-full bg-red-50 text-red-600 p-4">
+        <div className="text-center">
+          <p className="font-semibold">Map Error</p>
+          <p className="text-sm mt-1">Unable to render map. Please try again.</p>
+        </div>
+      </div>
+    );
+  }
+}
 
 export default function Discover() {
+  const { cafes, loading, error } = useCafes();
   const [showMap, setShowMap] = useState(false);
   const [selectedTab, setSelectedTab] = useState('nearby');
+  const [userLocation, setUserLocation] = useState(null);
+  const [selectedCafe, setSelectedCafe] = useState(null);
+  const navigate = useNavigate();
+
+  // Request user's location on mount
+  useEffect(() => {
+    if (!navigator.geolocation) return;
+    navigator.geolocation.getCurrentPosition(
+      (pos) => setUserLocation([pos.coords.latitude, pos.coords.longitude]),
+      () => console.warn("Location access denied — using default center.")
+    );
+  }, []);
 
   // Mock data - replace with API calls
   const nearby = [
@@ -68,7 +108,7 @@ export default function Discover() {
   return (
     <div className="w-full min-h-screen pb-20">
       {/* Map Toggle Section */}
-      <div className="px-4 py-4 bg-gray-50 border-b">
+      <div className="px-4 py-4 bg-stone-50 border-b">
         <button
           onClick={() => setShowMap(!showMap)}
           className="w-full bg-coffee text-white py-3 rounded-lg font-semibold hover:bg-opacity-90 transition"
@@ -79,8 +119,68 @@ export default function Discover() {
 
       {/* Map Placeholder */}
       {showMap && (
-        <div className="w-full h-64 bg-gray-200 flex items-center justify-center text-gray-600 border-b">
-          <p>Map view coming soon</p>
+        <div className="w-full bg-stone-50 border-b">
+          {loading ? (
+            <div className="h-64 flex items-center justify-center">
+              <div className="text-center">
+                <p className="text-stone-600 mb-2">Loading map...</p>
+                <div className="w-8 h-8 border-4 border-stone-300 border-t-coffee rounded-full animate-spin mx-auto"></div>
+              </div>
+            </div>
+          ) : error ? (
+            <div className="h-64 flex items-center justify-center bg-red-50">
+              <div className="text-center p-4">
+                <p className="text-red-600 font-semibold mb-2">⚠️ Map Error</p>
+                <p className="text-red-500 text-sm">{error}</p>
+              </div>
+            </div>
+          ) : (
+            <div className="h-64 p-3">
+              <MapWithErrorHandling
+                cafes={cafes}
+                selectedCafe={selectedCafe}
+                onSelectCafe={setSelectedCafe}
+                userLocation={userLocation}
+              />
+            </div>
+          )}
+
+          {/* Selected Cafe Info Card */}
+          {selectedCafe && (
+            <div className="px-4 py-3 bg-white border-t border-stone-200">
+              <div className="flex justify-between items-start">
+                <div>
+                  <h3 className="font-bold text-stone-800">{selectedCafe.name}</h3>
+                  <p className="text-sm text-stone-500">{selectedCafe.address}</p>
+                  {selectedCafe.rating && (
+                    <p className="text-sm mt-1">
+                      ⭐ {selectedCafe.rating} · {selectedCafe.checkinCount ?? 0} check-ins
+                    </p>
+                  )}
+                </div>
+                <button
+                  onClick={() => setSelectedCafe(null)}
+                  className="text-stone-400 hover:text-stone-600 text-lg"
+                >
+                  ✕
+                </button>
+              </div>
+              <div className="flex gap-2 mt-3">
+                <button
+                  onClick={() => navigate(`/cafe/${selectedCafe.id}`)}
+                  className="flex-1 bg-coffee text-white rounded-lg py-2 text-sm font-medium hover:bg-opacity-90"
+                >
+                  View Café
+                </button>
+                <button
+                  onClick={() => navigate(`/cafe/${selectedCafe.id}?checkin=true`)}
+                  className="flex-1 border border-coffee text-coffee rounded-lg py-2 text-sm font-medium hover:bg-cream"
+                >
+                  Check In ☕
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -94,7 +194,7 @@ export default function Discover() {
               className={`flex-1 py-3 px-0 font-semibold whitespace-nowrap transition border-r last:border-r-0 ${
                 selectedTab === tab
                   ? 'bg-coffee text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  : 'bg-cream text-coffee hover:bg-cream-soft'
               }`}
             >
               {tab.charAt(0).toUpperCase() + tab.slice(1)}

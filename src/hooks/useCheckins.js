@@ -13,7 +13,7 @@ export function useCheckins() {
   const fetchCheckins = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:3000/checkins');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/checkins`);
       setCheckins(response.data);
     } catch (err) {
       setError(err.message);
@@ -24,7 +24,7 @@ export function useCheckins() {
 
   const addCheckin = async (checkin) => {
     try {
-      const response = await axios.post('http://localhost:3000/checkins', checkin);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/checkins`, checkin);
       setCheckins([...checkins, response.data]);
       return response.data;
     } catch (err) {
