@@ -46,6 +46,23 @@
       "favoriteCafes": [1, 2]
     }
   ],
+  "friends": [
+    {
+      "id": 1,
+      "userId": 1,
+      "friendId": 2,
+      "status": "accepted"
+    }
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "name": "Coffee Lovers",
+      "description": "A group for coffee enthusiasts",
+      "members": [1],
+      "createdBy": 1
+    }
+  ],
   "events": [
     {
       "id": 1,

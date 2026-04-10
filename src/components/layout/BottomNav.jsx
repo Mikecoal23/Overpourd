@@ -10,8 +10,8 @@ export default function BottomNav({ onCheckinClick }) {
           <span className="text-xs">Activity</span>
         </Link>
         <Link to="/explore" className="flex-1 py-4 text-center hover:bg-gray-100 flex flex-col items-center gap-1">
-          <FiCalendar size={24} />
-          <span className="text-xs">Events</span>
+          <FiCompass size={24} />
+          <span className="text-xs">Explore</span>
         </Link>
         
         {/* Center Check-In Button */}

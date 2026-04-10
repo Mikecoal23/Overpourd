@@ -21,7 +21,7 @@ export default function Groups() {
 
   const fetchGroups = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/groups');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/groups`);
       setGroups(response.data);
       setLoading(false);
     } catch (error) {
@@ -32,7 +32,7 @@ export default function Groups() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/users');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/users`);
       setUsers(response.data);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -53,7 +53,7 @@ export default function Groups() {
     };
 
     try {
-      await axios.post('http://localhost:3000/groups', newGroup);
+      await axios.post(`${import.meta.env.VITE_API_URL}/groups`, newGroup);
       fetchGroups();
       setFormData({ name: '', description: '' });
       setShowCreateModal(false);
