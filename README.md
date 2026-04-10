@@ -13,6 +13,8 @@ A mobile-friendly web app for coffee lovers to check in at cafes, share drinks, 
 1. **Install dependencies:**
    ```bash
    npm install
+   npm install react-leaflet@4 leaflet
+   npm install react-icons
    ```
 
 2. **Start the development server:**
