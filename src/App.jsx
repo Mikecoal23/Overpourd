@@ -24,7 +24,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <div className="pt-20 pb-20">
+      <div className="pt-20 pb-20 min-h-screen bg-cream text-coffee">
         <Routes>
           <Route path="/" element={<Feed />} />
           <Route path="/explore" element={<Explore />} />
@@ -35,7 +35,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
-      <BottomNav onCheckinClick={() => setIsCheckinOpen(true)} />
+      <BottomNav isCheckinOpen={isCheckinOpen} onCheckinClick={() => setIsCheckinOpen(true)} />
       
       {/* Check-In Modal */}
       <CheckinModal
