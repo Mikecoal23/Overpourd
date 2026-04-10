@@ -29,6 +29,19 @@ A mobile-friendly web app for coffee lovers to check in at cafes, share drinks, 
    ```
    API runs at `http://localhost:3000` with data from `src/data/db.json`
 
+### Extra
+
+**Fetch New Locations:**
+```bash
+npm run fetch-cafes
+```
+
+**GeoJson to Json converter(for manually updating locations)**
+```
+# Automotically updates db.json file
+node scripts/convert-geojson.mjs /path/to/GeoJsonFile
+```
+
 ##  Features
 
 - **Feed** - View recent check-ins from the community
