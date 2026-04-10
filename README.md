@@ -31,13 +31,13 @@ A mobile-friendly web app for coffee lovers to check in at cafes, share drinks, 
 
 ### Extra
 
-**Fetch New Locations:**
+- **Fetch New Locations:**
    ```bash
    npm run fetch-cafes
    ```
    Fetches new locations from API, preserves existing checkins & user arrays
 
-**GeoJson to Json converter(for manually updating locations)**
+- **GeoJson to Json converter(for manually updating locations)**
    ```
    node scripts/convert-geojson.mjs /path/to/GeoJsonFile
    ```
