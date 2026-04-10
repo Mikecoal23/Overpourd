@@ -104,33 +104,39 @@ export default function Feed() {
           onClick={() => setFilter('friends')}
           className={`flex-1 px-4 py-2 rounded-none font-semibold transition flex flex-col items-center gap-1 ${
             filter === 'friends'
-              ? 'bg-coffee text-white'
-              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              ? 'bg-cream text-coffee'
+              : 'bg-cream-soft text-coffee hover:bg-cream'
           }`}
         >
-          <FiUsers size={20} />
+          <span className={`p-2 rounded-full transition ${filter === 'friends' ? 'bg-sage text-cream' : 'bg-cream text-coffee'}`}>
+            <FiUsers size={20} />
+          </span>
           <span className="text-xs">Friends</span>
         </button>
         <button
           onClick={() => setFilter('nearby')}
           className={`flex-1 px-4 py-2 rounded-none font-semibold transition flex flex-col items-center gap-1 ${
             filter === 'nearby'
-              ? 'bg-coffee text-white'
-              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              ? 'bg-cream text-coffee'
+              : 'bg-cream-soft text-coffee hover:bg-cream'
           }`}
         >
-          <FiMapPin size={20} />
+          <span className={`p-2 rounded-full transition ${filter === 'nearby' ? 'bg-sage text-cream' : 'bg-cream text-coffee'}`}>
+            <FiMapPin size={20} />
+          </span>
           <span className="text-xs">Nearby</span>
         </button>
         <button
           onClick={() => setFilter('groups')}
           className={`flex-1 px-4 py-2 rounded-none font-semibold transition flex flex-col items-center gap-1 ${
             filter === 'groups'
-              ? 'bg-coffee text-white'
-              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              ? 'bg-cream text-coffee'
+              : 'bg-cream-soft text-coffee hover:bg-cream'
           }`}
         >
-          <FiAward size={20} />
+          <span className={`p-2 rounded-full transition ${filter === 'groups' ? 'bg-sage text-cream' : 'bg-cream text-coffee'}`}>
+            <FiAward size={20} />
+          </span>
           <span className="text-xs">Groups</span>
         </button>
       </div>

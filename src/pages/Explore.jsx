@@ -24,23 +24,23 @@ export default function Explore() {
 
   if (loading) {
     return (
-      <div className="w-full flex items-center justify-center h-screen">
-        <p className="text-gray-500">Loading cafes...</p>
+      <div className="w-full flex items-center justify-center h-screen bg-cream text-coffee">
+        <p className="text-coffee/70">Loading cafes...</p>
       </div>
     );
   }
 
   return (
-    <div className="w-full flex flex-col items-center justify-center px-4 py-4 pb-20">
-      <h1 className="text-2xl font-bold text-coffee mb-6">Explore Cafes</h1>
+    <div className="w-full flex flex-col items-center justify-center px-4 py-4 pb-20 bg-cream">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full">
         {cafes.map((cafe) => (
-          <Link key={cafe._id || cafe.id} to={`/cafe/${cafe.id}`} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer">
+          <Link key={cafe._id || cafe.id} to={`/cafe/${cafe.id}`} className="bg-cream-soft rounded-lg shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer">
             {cafe.image && (
               <img src={cafe.image} alt={cafe.name} className="w-full h-48 object-cover" />
             )}
             <div className="p-4">
               <h3 className="text-xl font-bold text-coffee mb-2">{cafe.name}</h3>
+              <p className="text-coffee/70 text-sm mb-4">{cafe.description || cafe.location}</p>
               
               <div className="space-y-2 text-sm">
                 <div className="flex items-center gap-2 text-gray-700">
@@ -49,9 +49,13 @@ export default function Explore() {
                 </div>
                 <div className="flex items-center gap-2 text-gray-700">
                   <FiStar size={16} className="text-coffee" />
-                  <span>{cafe.rating} stars</span>
+                  <span>{cafe.rating || 0} stars</span>
                 </div>
               </div>
+              
+              <button className="w-full mt-4 bg-sage text-cream py-2 rounded-lg font-semibold hover:bg-sage/90 transition">
+                Visit Cafe
+              </button>
             </div>
           </Link>
         ))}
