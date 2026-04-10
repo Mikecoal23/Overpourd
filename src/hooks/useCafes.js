@@ -13,7 +13,7 @@ export function useCafes() {
   const fetchCafes = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:3000/cafes');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/cafes`);
       setCafes(response.data);
     } catch (err) {
       setError(err.message);
@@ -24,7 +24,7 @@ export function useCafes() {
 
   const getCafeById = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:3000/cafes/${id}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/cafes/${id}`);
       return response.data;
     } catch (err) {
       setError(err.message);
