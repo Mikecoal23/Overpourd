@@ -10,7 +10,7 @@ export default function Header() {
       case '/explore':
         return 'Explore';
       case '/checkin':
-        return 'Check In';
+        return 'Discover';
       case '/profile':
         return 'Profile';
       default:
@@ -19,8 +19,8 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white shadow">
-      <div className="max-w-7xl mx-auto px-4 py-4">
+    <header className="bg-white dark:bg-gray-800 shadow transition-colors">
+      <div className="max-w-7xl mx-auto px-4 py-4 text-center">
         <h1 className="text-2xl font-bold text-coffee">{getPageTitle()}</h1>
       </div>
     </header>
