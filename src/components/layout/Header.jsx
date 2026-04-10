@@ -19,7 +19,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white dark:bg-gray-800 shadow transition-colors">
+    <header className="bg-white shadow">
       <div className="max-w-7xl mx-auto px-4 py-4 text-center">
         <h1 className="text-2xl font-bold text-coffee">{getPageTitle()}</h1>
       </div>

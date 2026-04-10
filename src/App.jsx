@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from './context/ThemeContext';
 import Header from './components/layout/Header';
 import BottomNav from './components/layout/BottomNav';
 import CheckinModal from './components/ui/CheckinModal';
@@ -11,7 +10,7 @@ import Checkin from './pages/Checkin';
 import Profile from './pages/Profile';
 import './index.css';
 
-function AppContent() {
+function App() {
   const [isCheckinOpen, setIsCheckinOpen] = useState(false);
 
   const handleCheckinSubmit = (data) => {
@@ -47,14 +46,6 @@ function AppContent() {
         onSubmit={handleCheckinSubmit}
       />
     </Router>
-  );
-}
-
-function App() {
-  return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
   );
 }
 

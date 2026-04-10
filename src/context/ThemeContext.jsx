@@ -1,31 +1,54 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [isDark, setIsDark] = useState(() => {
-    // Check localStorage for saved preference
-    const saved = localStorage.getItem('theme');
-    if (saved) return saved === 'dark';
-    // Check system preference
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
+  const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
+  // Initialize theme on mount
   useEffect(() => {
-    // Save preference to localStorage
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    // Apply to document
-    if (isDark) {
-      document.documentElement.classList.add('dark');
+    const saved = localStorage.getItem('theme');
+    let initialDark = false;
+    
+    if (saved) {
+      initialDark = saved === 'dark';
     } else {
-      document.documentElement.classList.remove('dark');
+      initialDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
-  }, [isDark]);
+    
+    setIsDark(initialDark);
+    applyTheme(initialDark);
+    setMounted(true);
+  }, []);
 
-  const toggleTheme = () => setIsDark(!isDark);
+  // Apply theme changes
+  useEffect(() => {
+    if (mounted) {
+      applyTheme(isDark);
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+  }, [isDark, mounted]);
+
+  const applyTheme = (dark) => {
+    const html = document.documentElement;
+    const body = document.body;
+    
+    if (dark) {
+      html.classList.add('dark');
+      body.classList.add('dark');
+    } else {
+      html.classList.remove('dark');
+      body.classList.remove('dark');
+    }
+  };
+
+  const toggleTheme = useCallback(() => {
+    setIsDark((prev) => !prev);
+  }, []);
 
   return (
-    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+    <ThemeContext.Provider value={{ isDark, toggleTheme, mounted }}>
       {children}
     </ThemeContext.Provider>
   );

@@ -19,15 +19,15 @@ export default function CheckinModal({ isOpen, onClose, onSubmit }) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 max-w-md w-full max-h-96 overflow-y-auto transition-colors">
-        <h2 className="text-2xl font-bold mb-4 dark:text-white">Check In</h2>
+      <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full max-h-96 overflow-y-auto">
+        <h2 className="text-2xl font-bold mb-4">Check In</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Cafe name"
             value={cafe}
             onChange={(e) => setCafe(e.target.value)}
-            className="w-full border dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded px-3 py-2 mb-3 transition-colors"
+            className="w-full border rounded px-3 py-2 mb-3"
             required
           />
           <input
@@ -35,7 +35,7 @@ export default function CheckinModal({ isOpen, onClose, onSubmit }) {
             placeholder="What are you drinking?"
             value={drink}
             onChange={(e) => setDrink(e.target.value)}
-            className="w-full border dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded px-3 py-2 mb-3 transition-colors"
+            className="w-full border rounded px-3 py-2 mb-3"
             required
           />
           <input
@@ -43,25 +43,25 @@ export default function CheckinModal({ isOpen, onClose, onSubmit }) {
             placeholder="Location (optional)"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="w-full border dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded px-3 py-2 mb-3 transition-colors"
+            className="w-full border rounded px-3 py-2 mb-3"
           />
           <textarea
             placeholder="Leave a review (optional)"
             value={review}
             onChange={(e) => setReview(e.target.value)}
-            className="w-full border dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded px-3 py-2 mb-3 resize-none h-20 transition-colors"
+            className="w-full border rounded px-3 py-2 mb-3 resize-none h-20"
           />
           <div className="flex gap-2">
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-2 bg-gray-300 dark:bg-gray-600 dark:text-white rounded hover:bg-gray-400 dark:hover:bg-gray-500 transition-colors"
+              className="flex-1 px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="flex-1 px-4 py-2 bg-coffee text-white rounded hover:bg-opacity-90 transition-colors"
+              className="flex-1 px-4 py-2 bg-coffee text-white rounded hover:bg-opacity-90"
             >
               Check In
             </button>
